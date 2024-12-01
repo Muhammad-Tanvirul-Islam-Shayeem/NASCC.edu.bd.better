@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navy Anchorage School and College</title>
+  <style>
+    /* General Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #0c0c0c;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      background: rgba(0, 0, 0, 0.85);
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+    }
+    .navbar .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover {
+      color: #00ffcc;
+    }
+
+    /* Hamburger Menu */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+    .hamburger div {
+      width: 30px;
+      height: 3px;
+      background-color: white;
+      transition: 0.3s;
+    }
+    .navbar.open .hamburger div:nth-child(1) {
+      transform: rotate(45deg) translateY(8px);
+    }
+    .navbar.open .hamburger div:nth-child(2) {
+      opacity: 0;
+    }
+    .navbar.open .hamburger div:nth-child(3) {
+      transform: rotate(-45deg) translateY(-8px);
+    }
+    .navbar.open .nav-links {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 70px;
+      right: 20px;
+      background-color: rgba(0, 0, 0, 0.85);
+      width: 150px;
+      border-radius: 10px;
+      padding: 15px;
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(135deg, #111, #222);
+      padding: 0 15px;
+    }
+    .hero h1 {
+      font-size: 2rem;
+      line-height: 1.2;
+      word-wrap: break-word;
+    }
+    .hero .gradient-text {
+      background: linear-gradient(45deg, #ff0077, #00ffcc);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .hero p {
+      font-size: 1rem;
+      margin-top: 10px;
+      word-wrap: break-word;
+    }
+
+    .btn-group {
+      margin-top: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      color: #fff;
+      background: linear-gradient(45deg, #ff0077, #00ffcc);
+      transition: background 0.3s ease-in-out;
+    }
+    button:hover {
+      background: linear-gradient(45deg, #00ffcc, #ff0077);
+    }
+
+    /* Features Section */
+    .features {
+      padding: 100px 50px;
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+    }
+    .feature-box {
+      background: rgba(0, 0, 0, 0.85);
+      padding: 40px;
+      border-radius: 10px;
+      opacity: 0;
+      transform: translateX(-100%);
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      transition: border 0.3s ease;
+      position: relative;
+    }
+
+    /* Glowing Red Border on Hover or Press */
+    .feature-box:hover, .feature-box.active {
+      border: 3px solid red;
+      box-shadow: 0 0 15px red;
+    }
+
+    /* Slide-in Animation */
+    .feature-box.active {
+      animation: slideIn 1.5s forwards;
+    }
+    @keyframes slideIn {
+      from {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    /* Typewriter Animation */
+    .typewriter h2 {
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 3px solid #ff0077;
+      animation: typing 2s steps(15), blink 0.5s step-end infinite;
+    }
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+      to {
+        width: 100%;
+      }
+    }
+    @keyframes blink {
+      50% {
+        border-color: transparent;
+      }
+    }
+
+    /* Fade in Description */
+    .fade-in-description {
+      animation: fadeInDesc 2s ease-in-out;
+    }
+    @keyframes fadeInDesc {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Footer */
+    .footer {
+      padding: 20px;
+      background-color: #111;
+      text-align: center;
+      color: white;
+      font-size: 14px;
+      margin-top: 50px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">NASCC</div>
+    <div class="hamburger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#features">About</a></li>
+        <li><a href="#download">Admission</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1 class="gradient-text">Navy Anchorage School and College Chattogram</h1>
+      <p>A School for both Civil and Defence with higher education</p>
+      <div class="btn-group">
+        <button>Join Now</button>
+        <button>Log in</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="features">
+    <div class="feature-box" id="feature1">
+      <div class="typewriter">
+        <h2>Primary Section</h2>
+      </div>
+      <p class="fade-in-description">For class PG, Nursery, KG up to class 5 of basic learning.</p>
+    </div>
+    <div class="feature-box" id="feature2">
+      <div class="typewriter">
+        <h2>Higher Section</h2>
+      </div>
+      <p class="fade-in-description">Starting with Class 6 to 9 and 10 with higher education.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2024 NASCC. All rights reserved.</p>
+<p>Residential Area-2, New Mooring, Chattogram, Bangladesh.</p>
+  </footer>
+
+  <script>
+    // Hamburger Menu Toggle
+    function toggleMenu() {
+      document.querySelector('.navbar').classList.toggle('open');
+    }
+
+    // Scroll-based trigger function for animations
+    window.addEventListener("scroll", function() {
+      const features = document.querySelectorAll('.feature-box');
+      features.forEach((feature) => {
+        const rect = feature.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          feature.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
