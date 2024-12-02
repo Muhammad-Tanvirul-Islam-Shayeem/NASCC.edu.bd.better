@@ -30,9 +30,12 @@
       z-index: 1000;
     }
     .navbar .logo {
-      font-size: 24px;
-      font-weight: bold;
-    }
+  font-size: 24px;
+  font-weight: bold;
+  background: linear-gradient(45deg, #ff0077, #00ffcc);
+  -webkit-background-clip: text;
+  color: transparent;
+}
     .nav-links {
       list-style: none;
       display: flex;
@@ -203,6 +206,39 @@
       }
     }
 
+.admission {
+  padding: 100px 50px;
+  text-align: center;
+  background-color: #222;
+  color: white;
+}
+
+.admission h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.admission p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.pdf-links a {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background: linear-gradient(45deg, #ff0077, #00ffcc);
+  color: white;
+  text-decoration: none;
+  width: fit-content;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.pdf-links a:hover {
+  background: linear-gradient(45deg, #00ffcc, #ff0077);
+}
+
     /* Footer */
     .footer {
       padding: 20px;
@@ -274,10 +310,20 @@
     </div>
   </section>
 
+  <!-- Admission Section -->
+  <section id="download" class="admission">
+    <h2>Examination Information</h2>
+    <p>Download the current Final Term guidelines and forms below:</p>
+    <div class="pdf-links">
+      <a href="Final Term Syllabus VI.pdf" download>Download Final Term Syllabus for class VI</a>
+      <a href="Assessment routine Class VI 24-2.pdf" download>Download Final Term Exam Routine for Class VI</a>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer class="footer">
     <p>&copy; 2024 NASCC. All rights reserved.</p>
-<p>Residential Area-2, New Mooring, Chattogram, Bangladesh.</p>
+    <p>Residential Area-2, New Mooring, Chattogram, Bangladesh.</p>
   </footer>
 
   <script>
@@ -298,4 +344,4 @@
     });
   </script>
 </body>
-</html>
+  </html>
